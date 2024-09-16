@@ -1,16 +1,27 @@
+/// A Savings Account data structure
 pub struct SavingsAccount {
     balance: i32,
 }
 
 impl SavingsAccount {
+    /// Creates instance of Savings Account
+    /// with 0 balance
+    /// ```
+    /// use bank::SavingsAccount;
+    /// let account = SavingsAccount::new();
+    /// assert_eq!(account.get_balance(),0);
+    /// ```
     pub fn new() -> SavingsAccount {
         SavingsAccount{
             balance: 0,
         }
     }
 
+    /// Fetching Account Balance(Getter function)
     pub fn get_balance(&self) -> i32 { self.balance }
 
+    /// Depositing into an account
+    /// Will panic if the deposit amount is negative
     pub fn deposit(&mut self, amount: i32) { 
         if amount < 0 {
             panic!("Cannot deposit a negative amount");
@@ -19,6 +30,7 @@ impl SavingsAccount {
         
     }
 
+    /// will transfer from One account to other
     pub fn transfer(&self, acc_number: u32, amount: i32) -> Result<String,String> {
         Ok(format!("Transferred ${amount} to {acc_number}"))
     }
